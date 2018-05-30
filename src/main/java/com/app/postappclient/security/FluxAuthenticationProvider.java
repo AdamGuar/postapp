@@ -2,6 +2,7 @@ package com.app.postappclient.security;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ReactiveHttpOutputMessage;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -16,12 +17,14 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @Component
 public class FluxAuthenticationProvider implements AuthenticationProvider{
-
-	WebClient client = WebClient.create("http://localhost:8080/user");
 	
+	@Value("${api.host}")
+	private String apiHost;
 	
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+		
+		WebClient client = WebClient.create(apiHost+"user");
 		
 		 String name = authentication.getName();
 	     String password = authentication.getCredentials().toString();
