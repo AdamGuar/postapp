@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <script th:href="@{/js/webgl.js}" src="../js/webgl.js"></script>
 
     <title>PostApp</title>
 	
@@ -58,7 +59,7 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            WebGl container
+                            <canvas id="glCanvas" width="640" height="480"></canvas>
                         </div>
                         <!-- /.panel-body -->
                     </div>
