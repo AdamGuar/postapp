@@ -1,4 +1,5 @@
 function drawCanvas() {
+  console.log('Draw canvas')
   const canvas = document.querySelector("#glCanvas");
   // Initialize the GL context
   const gl = canvas.getContext("webgl");
