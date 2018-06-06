@@ -41,6 +41,10 @@ public class PostAppWebEndpoint {
 
 	@RequestMapping("/model/{id}")
 	String modelController(Model model, Principal principal, @PathVariable String id) {
+		List<String> users = service.getAllSubsForModel(id);
+		boolean isSubscribed = users.contains(principal.getName());
+		model.addAttribute("issub",!isSubscribed);
+		model.addAttribute("users",users);
 		model.addAttribute("username", principal.getName());
 		model.addAttribute("modelname", id);
 		return "model";
@@ -60,6 +64,22 @@ public class PostAppWebEndpoint {
 		model.addAttribute("username", principal.getName());
 		model.addAttribute("mailtousername",mailtousername);
 		return "mailto";
+	}
+	
+	@RequestMapping("/subscribe/{modelid}")
+	String subscribe(Model model, Principal principal,@PathVariable String modelid) {
+		model.addAttribute("username", principal.getName());
+		model.addAttribute("modelname",modelid);
+		service.subscribeForModel(modelid, principal.getName());
+		return "subscribedOk";
+	}
+	
+	@RequestMapping("/unsubscribe/{modelid}")
+	String unsubscribe(Model model, Principal principal,@PathVariable String modelid) {
+		model.addAttribute("username", principal.getName());
+		model.addAttribute("modelname",modelid);
+		service.unsubscribeForModel(modelid, principal.getName());
+		return "unsubscribedOk";
 	}
 	
 	@RequestMapping(value = "/mailto", method =  RequestMethod.POST)
