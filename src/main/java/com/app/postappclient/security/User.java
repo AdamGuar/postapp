@@ -3,8 +3,18 @@ package com.app.postappclient.security;
 public class User {
 	
 	String username;
+	
 	String password;
 	
+	
+	public User() {
+	}
+	
+	public User(String name, String password2) {
+		this.username = name;
+		this.password = password2;
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -22,12 +32,5 @@ public class User {
 		this.username = username;
 	}
 	
-	public User() {
-	}
-	
-	public User(String username, String password) {
-		this.username = username;
-		this.password = password;
-	}
 	
 }

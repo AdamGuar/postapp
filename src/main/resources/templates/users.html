@@ -45,44 +45,25 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
+                    <h1 class="page-header">Users</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-tasks fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
-                                    <div>Models</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
+            
                 <!-- /.col-lg-8 -->
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Models list
+                            <i class="fa fa-bell fa-fw"></i> List of registered users
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="list-group">
-                            	<div th:each="model : ${models}">
-	                            	<a href="/model/mock1" th:href="@{'/model/' + ${model}}" class="list-group-item" th:text="${model}">
-	                                    <i class="fa fa-tasks fa-fw"></i> mock1
-	                                    </span>
+                           <div class="list-group">
+                           		<div th:each="user : ${users}">
+	                                <a href="/mailto/user@user.com" th:href="@{'/mailto/' + ${user}}" class="list-group-item" th:text="${user}">
+	                                    <i class="fa fa-tasks fa-fw"></i> user@user.com
 	                                </a>
-                            	</div>
+                                <div>
                             </div>
                         </div>
                         <!-- /.panel-body -->
