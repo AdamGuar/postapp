@@ -1,5 +1,5 @@
 function drawCanvas() {
-  const canvas = document.getElementById("glCanvas");
+  const canvas = document.querySelector("#glCanvas");
 
   var camera, scene, renderer;
   var geometry, material, mesh;
