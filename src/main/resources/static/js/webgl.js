@@ -19,7 +19,7 @@ function drawCanvas() {
   renderer = new THREE.WebGLRenderer({
     antialias: true
   });
-  renderer.setSize(canvas.width, canvas.height);
+  renderer.setSize(600, 400);
   canvas.appendChild(renderer.domElement);
 
 }
