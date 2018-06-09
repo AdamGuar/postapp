@@ -5,7 +5,7 @@ function drawCanvas() {
   var geometry, material, mesh;
 
 
-  camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 10);
+  camera = new THREE.PerspectiveCamera(70, 600 / 400, 0.01, 10);
   camera.position.z = 1;
 
   scene = new THREE.Scene();
