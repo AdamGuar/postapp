@@ -1,13 +1,20 @@
 package com.app.postappclient.rest;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ReactiveHttpOutputMessage;
+import org.springframework.http.client.reactive.ClientHttpRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.reactive.function.BodyInserter;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -15,6 +22,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import com.app.postappclient.ApiService;
 import com.app.postappclient.model.MailMessage;
 import com.app.postappclient.model.ModelID;
+import com.app.postappclient.model.ModelRequest;
 import com.app.postappclient.model.SubRequest;
 import com.app.postappclient.model.Subscription;
 import com.app.postappclient.security.User;
@@ -107,6 +115,46 @@ public class RestApiService implements ApiService{
 		WebClient client = WebClient.create(apiHost + "/sub/unsubscribe");
 		
 		SubRequest request = new SubRequest(modelName, username);
+		
+		BodyInserter<Object, ReactiveHttpOutputMessage> inserter
+	     = BodyInserters.fromObject(request);
+	     
+	     client.post()
+					.body(inserter)
+					.accept(MediaType.APPLICATION_JSON)
+					.retrieve().bodyToMono(Subscription.class).block();
+		
+	}
+	
+	
+/*	@Override
+	public void saveModel(String modelName,MultipartFile file) {
+		WebClient client = WebClient.create(apiHost + "/save");
+		
+				
+		MultiValueMap<String, Object> multipartData = new LinkedMultiValueMap<>();
+		multipartData.add("file", file);
+		multipartData.add("name", modelName);
+		
+		BodyInserter<MultiValueMap<String, Object>, ClientHttpRequest> inserter
+	     = BodyInserters.from(multipartData);
+	     
+	     client.post()
+					.body(inserter)
+					.retrieve().bodyToMono(Subscription.class).block();
+		
+	}*/
+	
+	public void saveModel(String modelName,MultipartFile file) {
+		WebClient client = WebClient.create(apiHost + "/model/savemodel");
+		
+		ModelRequest request;
+		
+		try {
+			request = new ModelRequest(modelName, new String(file.getBytes()));
+		} catch (IOException e) {
+			throw new IllegalArgumentException(e);
+		}
 		
 		BodyInserter<Object, ReactiveHttpOutputMessage> inserter
 	     = BodyInserters.fromObject(request);

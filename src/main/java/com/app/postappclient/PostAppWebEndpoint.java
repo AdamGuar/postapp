@@ -13,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.app.postappclient.model.MailMessage;
 
@@ -93,6 +95,21 @@ public class PostAppWebEndpoint {
 		return "sentOk";
 	}
 	
+	@RequestMapping("/save")
+	String renderSave(Model model, Principal principal) {
+		model.addAttribute("username", principal.getName());
+		return "save";
+	}
+	
+	@RequestMapping(value = "/save", method =  RequestMethod.POST)
+	String handleUpload(Model model, Principal principal,
+			@RequestParam("file") MultipartFile file,
+			@RequestParam("name") String name) 
+	{
+		service.saveModel(name, file);
+		model.addAttribute("username", principal.getName());
+		return "uploadedOK";
+	}
 
 	
 
