@@ -2,13 +2,11 @@ var camera, scene, renderer;
 var geometry, material, mesh;
 
 function drawCanvas() {
-  const canvas = document.querySelector("#glCanvas");
-
+  var canvas = document.getElementById('glCanvas');
 
 
   camera = new THREE.PerspectiveCamera(70, 600 / 400, 1, 1000);
   camera.position.z = 600;
-  camera.position.y = 150;
 
 
   scene = new THREE.Scene();
@@ -24,17 +22,17 @@ function drawCanvas() {
     antialias: true
   });
 
-  renderer.setSize(300, 200);
+  renderer.setSize(600, 400);
   canvas.appendChild(renderer.domElement);
-  canvas.addEventListener( 'touchmove', onDocumentTouchMove, false );
+  // canvas.addEventListener( 'touchmove', onDocumentTouchMove, false );
 
 
 }
 
-function onDocumentTouchMove( event ) {
-  if ( event.touches.length === 1 ) {
-    event.preventDefault();
-    mouseX = event.touches[ 0 ].pageX - windowHalfX;
-    targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.05;
-  }
-}
+// function onDocumentTouchMove( event ) {
+//   if ( event.touches.length === 1 ) {
+//     event.preventDefault();
+//     mouseX = event.touches[ 0 ].pageX - windowHalfX;
+//     targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.05;
+//   }
+// }

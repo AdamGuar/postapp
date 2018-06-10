@@ -34,6 +34,18 @@
     <![endif]-->
 	
 </head>
+<style>
+
+    canvas_for_three {
+          width: 600px;
+          height: 500px;
+          border: 1px solid white;
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          z-index: -1;
+    }
+  </style>
 
 <body onload="drawCanvas();">
 
@@ -57,7 +69,7 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div id="glCanvas" width="640" height="480"></div>
+                            <div id="glCanvas" class="canvas_for_three" width="640" height="480"></div>
                         </div>
                         <!-- /.panel-body -->
                     </div>
