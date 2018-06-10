@@ -12,11 +12,11 @@ function drawCanvas() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0xe0e0e0);
 
-  geometry = new THREE.BoxGeometry(200, 200, 200);
-  material = new THREE.MeshNormalMaterial();
-
-  mesh = new THREE.Mesh(geometry, material);
-  scene.add(mesh);
+  // geometry = new THREE.BoxGeometry(200, 200, 200);
+  // material = new THREE.MeshNormalMaterial();
+  //
+  // mesh = new THREE.Mesh(geometry, material);
+  // scene.add(mesh);
 
   renderer = new THREE.WebGLRenderer({
     antialias: true
