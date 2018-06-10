@@ -1,5 +1,11 @@
 var camera, scene, renderer, controls;
 
+var targetRotation = 0;
+var targetRotationOnMouseDown = 0;
+var mouseX = 0;
+var mouseXOnMouseDown = 0;
+var windowHalfX = 600 / 2;
+var windowHalfY = 400 / 2;
 
 function drawCanvas() {
   init();
@@ -14,14 +20,14 @@ function init() {
     antialias: true
   });
 
-  renderer.setSize(600, 400;
+  renderer.setSize(600, 400);
   canvas.appendChild(renderer.domElement);
 
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0xffffff);
 
-  camera = new THREE.PerspectiveCamera(45, 600/400, 1, 10000);
-  camera.position.z = 400;
+  camera = new THREE.PerspectiveCamera(45, 600 / 400, 1, 10000);
+  camera.position.z = 300;
 
   controls = new THREE.TrackballControls(camera);
   controls.rotateSpeed = 1.0;
