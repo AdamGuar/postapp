@@ -1,4 +1,4 @@
-var camera, scene, renderer;
+var camera, scene, renderer, controls;
 
 var targetRotation = 0;
 var targetRotationOnMouseDown = 0;
@@ -41,7 +41,7 @@ function drawCanvas() {
 
 
   var geometry = new THREE.BoxGeometry(50, 50, 50);
-  var material = new THREE.MeshNormalMaterial({
+  var material = new THREE.MeshBasicMaterial({
     color: 0xFF4040
   });
 
@@ -53,5 +53,6 @@ function drawCanvas() {
 }
 
 function render() {
+  controls.update();
   renderer.render(scene, camera);
 }
