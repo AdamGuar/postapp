@@ -44,6 +44,10 @@ function drawCanvas() {
   var mesh = new THREE.Mesh(geometry, material);
   scene.add(mesh);
 
-  renderer.render(scene, camera);
+  render();
 
+}
+
+function render() {
+  renderer.render(scene, camera);
 }
