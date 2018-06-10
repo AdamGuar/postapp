@@ -23,7 +23,7 @@ function drawCanvas() {
   });
 
   renderer.setSize(600, 400);
-  document.body.appendChild(renderer.domElement);
+  canvas.appendChild(renderer.domElement);
   // canvas.addEventListener( 'touchmove', onDocumentTouchMove, false );
 
 
