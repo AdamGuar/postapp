@@ -18,10 +18,10 @@ function drawCanvas() {
   canvas.appendChild(renderer.domElement);
 
   scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xe0e0e0);
+  scene.background = new THREE.Color(0xFFFFF);
 
-  camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.2, 1000);
-  camera.position.z = 300;
+  camera = new THREE.PerspectiveCamera(40, 600 / 400, 1, 1000);
+  camera.position.z = 200;
 
   controls = new THREE.TrackballControls(camera);
   controls.rotateSpeed = 1.0;
@@ -36,8 +36,12 @@ function drawCanvas() {
   scene.add(camera);
 
 
+	var light = new THREE.AmbientLight( 0x222222 );
+	scene.add( light );
+
+
   var geometry = new THREE.BoxGeometry(50, 50, 50);
-  var material = new THREE.MeshBasicMaterial({
+  var material = new THREE.MeshNormalMaterial({
     color: 0xFF4040
   });
 
