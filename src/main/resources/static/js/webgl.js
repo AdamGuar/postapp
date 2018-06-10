@@ -50,7 +50,7 @@ function init() {
 
 
   var geometry = new THREE.BoxGeometry(50, 50, 50);
-  var material = new THREE.MeshNormalMaterial();
+  var material = new THREE.MeshStandardMaterial({color: 0x000000});
 
   var mesh = new THREE.Mesh(geometry, material);
   scene.add(mesh);
