@@ -24,7 +24,7 @@ function init() {
   canvas.appendChild(renderer.domElement);
 
   scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xFFFFF);
+  scene.background = new THREE.Color(0xffffff);
 
   camera = new THREE.PerspectiveCamera(45, 600 / 400, 1, 10000);
   camera.position.z = 200;
@@ -35,7 +35,7 @@ function init() {
   scene.add(camera);
 
 
-  var light = new THREE.AmbientLight(0x222222);
+  var light = new THREE.AmbientLight(0xffffff);
   scene.add(light);
 
 
