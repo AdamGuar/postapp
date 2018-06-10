@@ -14,13 +14,13 @@ function init() {
     antialias: true
   });
 
-  renderer.setSize(canvas.innerWidth, canvas.innerHeight);
+  renderer.setSize(600, 400;
   canvas.appendChild(renderer.domElement);
 
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0xffffff);
 
-  camera = new THREE.PerspectiveCamera(45, canvas.innerWidth/canvas.innerHeight, 1, 10000);
+  camera = new THREE.PerspectiveCamera(45, 600/400, 1, 10000);
   camera.position.z = 400;
 
   controls = new THREE.TrackballControls(camera);
