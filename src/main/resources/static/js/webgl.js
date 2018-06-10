@@ -12,7 +12,7 @@ function drawCanvas() {
 
 
   scene = new THREE.Scene();
-  scene.background = new THREE.Color( 0xf0f0f0 );
+  scene.background = new THREE.Color(0xe0e0e0);
 
   geometry = new THREE.BoxGeometry(200, 200, 200);
   material = new THREE.MeshNormalMaterial();
@@ -23,7 +23,8 @@ function drawCanvas() {
   renderer = new THREE.WebGLRenderer({
     antialias: true
   });
-  renderer.setSize(600, 400);
+
+  renderer.setSize(300, 200);
   canvas.appendChild(renderer.domElement);
   canvas.addEventListener( 'touchmove', onDocumentTouchMove, false );
 
