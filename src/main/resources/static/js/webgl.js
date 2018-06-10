@@ -31,9 +31,9 @@ function drawCanvas() {
 
   var mesh = new THREE.Mesh(geometry, material);
   scene.add(mesh);
-  document.addEventListener('mousedown', onDocumentMouseDown, false);
-  document.addEventListener('touchstart', onDocumentTouchStart, false);
-  document.addEventListener('touchmove', onDocumentTouchMove, false);
+  canvas.addEventListener('mousedown', onDocumentMouseDown, false);
+  canvas.addEventListener('touchstart', onDocumentTouchStart, false);
+  canvas.addEventListener('touchmove', onDocumentTouchMove, false);
 
 
   renderer.render(scene, camera);
@@ -42,31 +42,35 @@ function drawCanvas() {
 
 function onDocumentMouseDown(event) {
   event.preventDefault();
-  document.addEventListener('mousemove', onDocumentMouseMove, false);
-  document.addEventListener('mouseup', onDocumentMouseUp, false);
-  document.addEventListener('mouseout', onDocumentMouseOut, false);
+  canvas.addEventListener('mousemove', onDocumentMouseMove, false);
+  canvas.addEventListener('mouseup', onDocumentMouseUp, false);
+  canvas.addEventListener('mouseout', onDocumentMouseOut, false);
   mouseXOnMouseDown = event.clientX - windowHalfX;
   targetRotationOnMouseDown = targetRotation;
 }
 
 function onDocumentMouseMove(event) {
+  console.log('mousemove');
   mouseX = event.clientX - windowHalfX;
   targetRotation = targetRotationOnMouseDown + (mouseX - mouseXOnMouseDown) * 0.02;
 }
 
 function onDocumentMouseUp(event) {
-  document.removeEventListener('mousemove', onDocumentMouseMove, false);
-  document.removeEventListener('mouseup', onDocumentMouseUp, false);
-  document.removeEventListener('mouseout', onDocumentMouseOut, false);
+  console.log('mouseup');
+  canvas.removeEventListener('mousemove', onDocumentMouseMove, false);
+  canvas.removeEventListener('mouseup', onDocumentMouseUp, false);
+  canvas.removeEventListener('mouseout', onDocumentMouseOut, false);
 }
 
 function onDocumentMouseOut(event) {
-  document.removeEventListener('mousemove', onDocumentMouseMove, false);
-  document.removeEventListener('mouseup', onDocumentMouseUp, false);
-  document.removeEventListener('mouseout', onDocumentMouseOut, false);
+  console.log('mouseout');
+  canvas.removeEventListener('mousemove', onDocumentMouseMove, false);
+  canvas.removeEventListener('mouseup', onDocumentMouseUp, false);
+  canvas.removeEventListener('mouseout', onDocumentMouseOut, false);
 }
 
 function onDocumentTouchStart(event) {
+  console.log('touchstart');
   if (event.touches.length === 1) {
     event.preventDefault();
     mouseXOnMouseDown = event.touches[0].pageX - windowHalfX;
@@ -75,6 +79,7 @@ function onDocumentTouchStart(event) {
 }
 
 function onDocumentTouchMove(event) {
+  console.log('touchmove');
   if (event.touches.length === 1) {
     event.preventDefault();
     mouseX = event.touches[0].pageX - windowHalfX;
