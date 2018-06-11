@@ -69,7 +69,7 @@
             </div>
     
                 <!-- /.col-lg-8 -->
-                <div class="col-lg-4">
+                <div class="col-lg-8">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="fa fa-bell fa-fw"></i> Models list
@@ -77,29 +77,13 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="list-group">
-                                <a href="/model/mock1" class="list-group-item">
-                                    <i class="fa fa-tasks fa-fw"></i> mock1
-                                    </span>
-                                </a>
-                                <a href="/model/mock2" class="list-group-item">
-                                    <i class="fa fa-tasks fa-fw"></i> mock2
-                                    </span>
-                                </a>
-                                <a href="/model/mock3" class="list-group-item">
-                                    <i class="fa fa-tasks fa-fw"></i> mock3
-                                    </span>
-                                </a>
-                                <a href="/model/mock4" class="list-group-item">
-                                    <i class="fa fa-tasks fa-fw"></i> mock4
-                                    </span>
-                                </a>
-                                <a href="/model/mock5" class="list-group-item">
-                                    <i class="fa fa-tasks fa-fw"></i> mock5
-                                    </span>
-                                </a>
+                            	<div th:each="model : ${models}">
+	                            	<a href="/model/mock1" th:href="@{'/model/' + ${model}}" class="list-group-item" th:text="${model}">
+	                                    <i class="fa fa-tasks fa-fw"></i> mock1
+	                                    </span>
+	                                </a>
+                            	</div>
                             </div>
-                            <!-- /.list-group -->
-                            <a href="#" class="btn btn-default btn-block">View All Models</a>
                         </div>
                         <!-- /.panel-body -->
                     </div>
