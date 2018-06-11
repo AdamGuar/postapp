@@ -4,13 +4,13 @@ package com.app.postappclient.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Model {
+public class ParsedModel {
 
     String modelName;
     private List<Node> nodes = new ArrayList<>();
     private List<ElementSolid> elements = new ArrayList<>();
 
-    public Model(String modelName, List<Node> nodes, List<ElementSolid> elements) {
+    public ParsedModel(String modelName, List<Node> nodes, List<ElementSolid> elements) {
         this.modelName = modelName;
         this.nodes = nodes;
         this.elements = elements;

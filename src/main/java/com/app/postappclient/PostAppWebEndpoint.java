@@ -4,7 +4,7 @@ import java.security.Principal;
 import java.util.Arrays;
 import java.util.List;
 
-import com.app.postappclient.model.Model;
+import com.app.postappclient.model.ParsedModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -45,13 +45,13 @@ public class PostAppWebEndpoint {
 	@RequestMapping("/model/{id}")
 	String modelController(Model model, Principal principal, @PathVariable String id) {
 		List<String> users = service.getAllSubsForModel(id);
-		Model model = service.getModel(id);
+		ParsedModel m = service.getModel(id);
 		boolean isSubscribed = users.contains(principal.getName());
 		model.addAttribute("issub",!isSubscribed);
 		model.addAttribute("users",users);
 		model.addAttribute("username", principal.getName());
 		model.addAttribute("modelname", id);
-		model.addAttribute("model", model);
+		model.addAttribute("model", m);
 
 		return "model";
 	}

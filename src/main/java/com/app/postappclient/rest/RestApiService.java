@@ -2,9 +2,7 @@ package com.app.postappclient.rest;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +20,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import com.app.postappclient.ApiService;
 import com.app.postappclient.model.MailMessage;
 import com.app.postappclient.model.ModelID;
-import com.app.postappclient.model.Model;
+import com.app.postappclient.model.ParsedModel;
 import com.app.postappclient.model.ModelRequest;
 import com.app.postappclient.model.SubRequest;
 import com.app.postappclient.model.Subscription;
@@ -169,12 +167,12 @@ public class RestApiService implements ApiService{
 
 
 	@Override
-	public void getModel(String modelID) {
+	public ParsedModel getModel(String modelID) {
 		WebClient client = WebClient.create(apiHost + "/model/getbyid/"+modelID);
 
-		Mono<Model> repsonse = client.get()
+		Mono<ParsedModel> repsonse = client.get()
 				.accept(MediaType.APPLICATION_JSON)
-				.retrieve().bodyToMono(Model.class);
+				.retrieve().bodyToMono(ParsedModel.class);
 
 		return repsonse.block();
 	}
