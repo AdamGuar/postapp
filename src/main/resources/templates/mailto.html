@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>PostApp</title>
+
+
+<!-- Bootstrap Core CSS -->
+<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"
+	href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- MetisMenu CSS -->
+<link th:href="@{/vendor/metisMenu/metisMenu.min.css}"
+	href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link th:href="@{/dist/css/sb-admin-2.css}"
+	href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+<!-- Morris Charts CSS -->
+<link th:href="@{/vendor/morrisjs/morris.css}"
+	href="../vendor/morrisjs/morris.css" rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link th:href="@{/vendor/font-awesome/css/font-awesome.min.css}"
+	href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet"
+	type="text/css">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+		<div th:replace="fragments/fragments :: nav" />
+
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header" th:text="|Send mail to ${mailtousername}|"></h1>
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+
+			<!-- /.col-lg-8 -->
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-bell fa-fw"></i> Message form
+					</div>
+					<!-- /.panel-heading -->
+					<div class="panel-body">
+						<form  th:action="@{/mailto}" method="post">
+							<div class="form-group">
+								<div>
+								<input
+										type="hidden" class="form-control" id="mailtousername" name="mailtousername" th:value="${mailtousername}">
+									<label for="Subject">Subject</label> <input
+										type="text" class="form-control" id="subject" name="subject" placeholder="Enter subject">
+								</div>
+								<div>
+									<label for="Subject">Message</label> <input
+										type="text" class="form-control" id="message" name="message" placeholder="Enter message">
+								</div>
+								<button type="submit" style="margin-top:10px" class="btn btn-primary">Send</button>
+							</div>
+						</form>
+					</div>
+					<!-- /.panel-body -->
+				</div>
+			</div>
+			<!-- /.panel .chat-panel -->
+		</div>
+		<!-- /.col-lg-4 -->
+	</div>
+	<!-- /.row -->
+	</div>
+	<!-- /#page-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+	<div th:replace="fragments/fragments :: scripts" />
+
+</body>
+
+</html>
