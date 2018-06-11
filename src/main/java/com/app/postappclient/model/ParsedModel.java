@@ -16,6 +16,8 @@ public class ParsedModel {
         this.elements = elements;
     }
 
+    public ParsedModel() {
+    }
 
     public String getModelName() {
         return modelName;
