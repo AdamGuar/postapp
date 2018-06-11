@@ -22,6 +22,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import com.app.postappclient.ApiService;
 import com.app.postappclient.model.MailMessage;
 import com.app.postappclient.model.ModelID;
+import com.app.postappclient.model.Model;
 import com.app.postappclient.model.ModelRequest;
 import com.app.postappclient.model.SubRequest;
 import com.app.postappclient.model.Subscription;
@@ -147,23 +148,35 @@ public class RestApiService implements ApiService{
 	
 	public void saveModel(String modelName,MultipartFile file) {
 		WebClient client = WebClient.create(apiHost + "/model/savemodel");
-		
+
 		ModelRequest request;
-		
+
 		try {
 			request = new ModelRequest(modelName, new String(file.getBytes()));
 		} catch (IOException e) {
 			throw new IllegalArgumentException(e);
 		}
-		
+
 		BodyInserter<Object, ReactiveHttpOutputMessage> inserter
-	     = BodyInserters.fromObject(request);
-	     
-	     client.post()
-					.body(inserter)
-					.accept(MediaType.APPLICATION_JSON)
-					.retrieve().bodyToMono(Subscription.class).block();
-		
+				= BodyInserters.fromObject(request);
+
+		client.post()
+				.body(inserter)
+				.accept(MediaType.APPLICATION_JSON)
+				.retrieve().bodyToMono(Subscription.class).block();
+
+	}
+
+
+	@Override
+	public void getModel(String modelID) {
+		WebClient client = WebClient.create(apiHost + "/model/getbyid/"+modelID);
+
+		Mono<Model> repsonse = client.get()
+				.accept(MediaType.APPLICATION_JSON)
+				.retrieve().bodyToMono(Model.class);
+
+		return repsonse.block();
 	}
 	
 
