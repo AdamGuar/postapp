@@ -6,8 +6,9 @@ var mouseX = 0;
 var mouseXOnMouseDown = 0;
 var windowHalfX = 600 / 2;
 var windowHalfY = 400 / 2;
-
-function drawCanvas() {
+var model;
+function drawCanvas(m) {
+  model = m;
   init();
   render();
   animate();
@@ -48,6 +49,7 @@ function init() {
   camera.add( pointLight );
   scene.add(light);
 
+  console.log(model);
 
   var geometry = new THREE.BoxGeometry(50, 50, 50);
   var material = new THREE.MeshStandardMaterial({color: 0x000000});
