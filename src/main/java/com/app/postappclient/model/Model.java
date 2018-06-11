@@ -10,46 +10,42 @@ public class Model {
     private List<Node> nodes = new ArrayList<>();
     private List<ElementSolid> elements = new ArrayList<>();
 
-	public Model(String modelName, List<Node> nodes, List<ElementSolid> elements) {
-		this.modelName = modelName;
-		this.nodes = nodes;
-		this.elements = elements;
-	}
+    public Model(String modelName, List<Node> nodes, List<ElementSolid> elements) {
+        this.modelName = modelName;
+        this.nodes = nodes;
+        this.elements = elements;
+    }
 
 
-	public String getModelName() {
-		return modelName;
-	}
+    public String getModelName() {
+        return modelName;
+    }
 
 
-
-	public void setModelName(String modelName) {
-		this.modelName = modelName;
-	}
-
+    public void setModelName(String modelName) {
+        this.modelName = modelName;
+    }
 
 
-	public List<Node> getNodes() {
-		return nodes;
-	}
+    public List<Node> getNodes() {
+        return nodes;
+    }
 
 
-
-	public void setNodes(List<Node> nodes) {
-		this.nodes = nodes;
-	}
-
+    public void setNodes(List<Node> nodes) {
+        this.nodes = nodes;
+    }
 
 
-	public List<ElementSolid> getElements() {
-		return elements;
-	}
+    public List<ElementSolid> getElements() {
+        return elements;
+    }
 
 
-	public void setElements(List<ElementSolid> elements) {
-		this.elements = elements;
-	}
-
+    public void setElements(List<ElementSolid> elements) {
+        this.elements = elements;
+    }
+}
 
 class Node {
 
@@ -105,21 +101,18 @@ class ElementSolid {
         this.nodes = nodes;
     }
 
-	public int getEid() {
-		return eid;
-	}
+    public int getEid() {
+        return eid;
+    }
 
-	public int getPid() {
-		return pid;
-	}
+    public int getPid() {
+        return pid;
+    }
 
-	public List<Node> getNodes() {
-		return nodes;
-	}
+    public List<Node> getNodes() {
+        return nodes;
+    }
 
-	public ElementSolid() {
-	}
-    
-    
-
+    public ElementSolid() {
+    }
 }
