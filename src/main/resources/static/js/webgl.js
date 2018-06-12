@@ -28,8 +28,6 @@ function init() {
   scene.background = new THREE.Color(0xffffff);
 
   camera = new THREE.PerspectiveCamera(45, 600 / 400, 1, 10000);
-  camera.position.set(0, 0, 0.5);
-
   controls = new THREE.TrackballControls(camera);
   controls.rotateSpeed = 1.0;
   controls.zoomSpeed = 1.2;
@@ -90,6 +88,8 @@ function init() {
     mesh.position.set(el.nodes[0].x, el.nodes[0].y, el.nodes[0].z);
     scene.add(mesh);
   }
+
+  camera.position.set(0, 0, 1);
 
   render();
 }
