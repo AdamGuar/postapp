@@ -49,17 +49,20 @@ function init() {
   camera.add( pointLight );
   scene.add(light);
 
-  console.log(model);
-
   var max_temp = model.elements[0].nodes[0].value;
+  var min_temp = model.elements[0].nodes[0].value;
+
   for (var i=0 ; i< model.elements.length ; i++) {
     const el = model.elements[i];
     for(var j=0 ; j<el.nodes.length ; j++) {
       if (el.nodes[j].value > max_temp) max_temp = el.nodes[j].value;
+      if (el.nodes[j].value < min_temp) min_temp = el.nodes[j].value;
     }
   }
 
-  print(max_temp);
+  console.log(max_temp);
+  console.log(min_temp);
+
 
   for (var i=0 ; i< model.elements.length ; i++) {
     const el = model.elements[i];
@@ -68,7 +71,16 @@ function init() {
     const depth = el.nodes[0].z - el.nodes[3].z;
 
     var geometry = new THREE.BoxGeometry(width, height, depth);
-    var material = new THREE.MeshStandardMaterial({color: 0x000000});
+    const temp_sum = 0;
+    for(var j=0 ; j<el.nodes.length ; j++) {
+      color_sum += el.nodes[j].value;
+    }
+    const temp_avg = color_sum / el.nodes.length;
+    const normalized = (temp_avg - min_temp) / (max_temp - min_temp);
+    const r = normalized;
+    const g = 1 - normalized;
+    var c = new THREE.Color( r, g, 0 );
+    var material = new THREE.MeshStandardMaterial({color: c});
 
     var mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(el.nodes[0].x, el.nodes[0].y, el.nodes[0].z);
