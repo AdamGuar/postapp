@@ -75,7 +75,7 @@ function init() {
     for(var j=0 ; j<el.nodes.length ; j++) {
       temp_sum += el.nodes[j].value;
     }
-    const temp_avg = color_sum / el.nodes.length;
+    const temp_avg = temp_sum / el.nodes.length;
     const normalized = (temp_avg - min_temp) / (max_temp - min_temp);
     const r = normalized;
     const g = 1 - normalized;
