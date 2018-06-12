@@ -71,7 +71,7 @@ function init() {
     const depth = el.nodes[0].z - el.nodes[3].z;
 
     var geometry = new THREE.BoxGeometry(width, height, depth);
-    const temp_sum = 0;
+    var temp_sum = 0;
     for(var j=0 ; j<el.nodes.length ; j++) {
       temp_sum += el.nodes[j].value;
     }
