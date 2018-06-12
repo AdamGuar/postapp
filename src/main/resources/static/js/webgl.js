@@ -63,8 +63,8 @@ function init() {
   for (var i=0 ; i< model.elements.length ; i++) {
     const el = model.elements[i];
     const width = el.nodes[1].x - el.nodes[0].x;
-    const height = el.nodes[4].y - el.nodes[0].y;
-    const depth = el.nodes[0].z - el.nodes[3].z;
+    const height = el.nodes[2].y - el.nodes[1].y;
+    const depth = el.nodes[5].z - el.nodes[1].z;
     if (depth != 0) {
       console.log(depth);
     }
@@ -83,7 +83,7 @@ function init() {
     var material = new THREE.MeshStandardMaterial({color: c});
     var mesh = new THREE.Mesh(geometry, material);
 
-    mesh.position.set(el.nodes[4].x, el.nodes[4].y, el.nodes[4].z);
+    mesh.position.set(el.nodes[0].x, el.nodes[0].y, el.nodes[0].z);
     scene.add(mesh);
   }
 
