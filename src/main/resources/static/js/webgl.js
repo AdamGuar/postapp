@@ -51,7 +51,7 @@ function init() {
 
   console.log(model);
 
-  for (el in model.elements) {
+  for (var el in model.elements) {
     const width = el.nodes[1].x - el.nodes[0].x;
     const height = el.nodes[4].y - el.nodes[0].y;
     const depth = el.nodes[0].z - el.nodes[3].z;
