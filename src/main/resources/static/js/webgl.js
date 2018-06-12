@@ -28,7 +28,7 @@ function init() {
   scene.background = new THREE.Color(0xffffff);
 
   camera = new THREE.PerspectiveCamera(45, 600 / 400, 1, 10000);
-  camera.position.z = 0;
+  camera.position.set(0, 0, 1);
 
   controls = new THREE.TrackballControls(camera);
   controls.rotateSpeed = 1.0;
