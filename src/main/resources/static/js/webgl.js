@@ -73,7 +73,7 @@ function init() {
     var geometry = new THREE.BoxGeometry(width, height, depth);
     const temp_sum = 0;
     for(var j=0 ; j<el.nodes.length ; j++) {
-      color_sum += el.nodes[j].value;
+      temp_sum += el.nodes[j].value;
     }
     const temp_avg = color_sum / el.nodes.length;
     const normalized = (temp_avg - min_temp) / (max_temp - min_temp);
