@@ -28,7 +28,6 @@ function init() {
   scene.background = new THREE.Color(0xffffff);
 
   camera = new THREE.PerspectiveCamera(45, 600 / 400, 1, 10000);
-  camera.position.z = 1;
 
   controls = new THREE.TrackballControls(camera);
   controls.rotateSpeed = 1.0;
@@ -60,8 +59,16 @@ function init() {
     }
   }
 
+  var max_width = 0;
+  var max_height = 0;
+
   for (var i=0 ; i< model.elements.length ; i++) {
     const el = model.elements[i];
+    if (el.nodes[1].x > max_width) max_width = el.nodes[1].x;
+    if (el.nodes[3].y > max_height) max_height = el.nodes[3].y;
+
+    const max = (max_width > max_height) ? max_width: max_height;
+
     const width = el.nodes[1].x - el.nodes[0].x;
     const height = el.nodes[2].y - el.nodes[1].y;
     const depth = el.nodes[5].z - el.nodes[1].z;
@@ -83,6 +90,9 @@ function init() {
     mesh.position.set(el.nodes[0].x, el.nodes[0].y, el.nodes[0].z);
     scene.add(mesh);
   }
+  console.log(max);
+  camera.position.z = max;
+
 
   render();
 }
