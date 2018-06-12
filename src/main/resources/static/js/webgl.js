@@ -28,7 +28,7 @@ function init() {
   scene.background = new THREE.Color(0xffffff);
 
   camera = new THREE.PerspectiveCamera(45, 600 / 400, 1, 10000);
-  camera.position.z = 1;
+  camera.position.z = 10;
 
   controls = new THREE.TrackballControls(camera);
   controls.rotateSpeed = 1.0;
@@ -69,18 +69,19 @@ function init() {
     const width = el.nodes[1].x - el.nodes[0].x;
     const height = el.nodes[4].y - el.nodes[0].y;
     const depth = el.nodes[3].z - el.nodes[0].z;
-
+    console.log(depth);
     var geometry = new THREE.BoxGeometry(width, height, depth);
+
     var temp_sum = 0;
     for(var j=0 ; j<el.nodes.length ; j++) {
       temp_sum += el.nodes[j].value;
     }
-
     const temp_avg = temp_sum / el.nodes.length;
     const normalized = (temp_avg - min_temp) / (max_temp - min_temp);
     const r = normalized;
     const g = 1 - normalized;
     var c = new THREE.Color( r, g, 0 );
+
     var material = new THREE.MeshStandardMaterial({color: c});
     var mesh = new THREE.Mesh(geometry, material);
 
