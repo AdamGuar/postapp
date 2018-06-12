@@ -68,7 +68,7 @@ function init() {
     const el = model.elements[i];
     const width = el.nodes[1].x - el.nodes[0].x;
     const height = el.nodes[4].y - el.nodes[0].y;
-    const depth = el.nodes[0].z - el.nodes[3].z;
+    const depth = el.nodes[3].z - el.nodes[0].z;
 
     var geometry = new THREE.BoxGeometry(width, height, depth);
     var temp_sum = 0;
@@ -83,7 +83,8 @@ function init() {
     var c = new THREE.Color( r, g, 0 );
     var material = new THREE.MeshStandardMaterial({color: c});
     var mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(el.nodes[0].x, el.nodes[0].y, el.nodes[0].z);
+
+    mesh.position.set(el.nodes[4].x, el.nodes[4].y, el.nodes[4].z);
     scene.add(mesh);
   }
 
