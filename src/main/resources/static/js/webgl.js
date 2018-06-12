@@ -16,7 +16,7 @@ function drawCanvas(m) {
 
 function init() {
   var canvas = document.getElementById('glCanvas');
-
+  console.log(model);
   renderer = new THREE.WebGLRenderer({
     antialias: true
   });
@@ -64,7 +64,7 @@ function init() {
     const el = model.elements[i];
     const width = el.nodes[1].x - el.nodes[0].x;
     const height = el.nodes[4].y - el.nodes[0].y;
-    const depth = el.nodes[3].z - el.nodes[0].z;
+    const depth = el.nodes[0].z - el.nodes[3].z;
     if (depth != 0) {
       console.log(depth);
     }
@@ -86,7 +86,6 @@ function init() {
     mesh.position.set(el.nodes[4].x, el.nodes[4].y, el.nodes[4].z);
     scene.add(mesh);
   }
-
 
   render();
 }
