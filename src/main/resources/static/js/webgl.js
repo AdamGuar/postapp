@@ -60,16 +60,14 @@ function init() {
     }
   }
 
-  console.log(max_temp);
-  console.log(min_temp);
-
-
   for (var i=0 ; i< model.elements.length ; i++) {
     const el = model.elements[i];
     const width = el.nodes[1].x - el.nodes[0].x;
     const height = el.nodes[4].y - el.nodes[0].y;
     const depth = el.nodes[3].z - el.nodes[0].z;
-    console.log(depth);
+    if (depth != 0) {
+      console.log(depth);
+    }
     var geometry = new THREE.BoxGeometry(width, height, depth);
 
     var temp_sum = 0;
