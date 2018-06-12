@@ -67,8 +67,6 @@ function init() {
     if (el.nodes[1].x > max_width) max_width = el.nodes[1].x;
     if (el.nodes[3].y > max_height) max_height = el.nodes[3].y;
 
-    const max = (max_width > max_height) ? max_width: max_height;
-
     const width = el.nodes[1].x - el.nodes[0].x;
     const height = el.nodes[2].y - el.nodes[1].y;
     const depth = el.nodes[5].z - el.nodes[1].z;
@@ -90,6 +88,7 @@ function init() {
     mesh.position.set(el.nodes[0].x, el.nodes[0].y, el.nodes[0].z);
     scene.add(mesh);
   }
+  const max = (max_width > max_height) ? max_width: max_height;
   console.log(max);
   camera.position.z = max;
 
