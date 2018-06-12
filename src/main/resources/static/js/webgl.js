@@ -51,9 +51,18 @@ function init() {
 
   console.log(model);
 
+  var max_temp = model.elements[0].nodes[0].value;
   for (var i=0 ; i< model.elements.length ; i++) {
     const el = model.elements[i];
-    console.log(el.nodes);
+    for(var j=0 ; j<el.nodes.length ; j++) {
+      if (el.nodes[j].value > max_temp) max_temp = el.nodes[j].value;
+    }
+  }
+
+  print(max_temp);
+
+  for (var i=0 ; i< model.elements.length ; i++) {
+    const el = model.elements[i];
     const width = el.nodes[1].x - el.nodes[0].x;
     const height = el.nodes[4].y - el.nodes[0].y;
     const depth = el.nodes[0].z - el.nodes[3].z;
