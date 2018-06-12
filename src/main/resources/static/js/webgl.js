@@ -75,13 +75,13 @@ function init() {
     for(var j=0 ; j<el.nodes.length ; j++) {
       temp_sum += el.nodes[j].value;
     }
+
     const temp_avg = temp_sum / el.nodes.length;
     const normalized = (temp_avg - min_temp) / (max_temp - min_temp);
     const r = normalized;
     const g = 1 - normalized;
     var c = new THREE.Color( r, g, 0 );
     var material = new THREE.MeshStandardMaterial({color: c});
-
     var mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(el.nodes[0].x, el.nodes[0].y, el.nodes[0].z);
     scene.add(mesh);
