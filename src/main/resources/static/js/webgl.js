@@ -28,7 +28,7 @@ function init() {
   scene.background = new THREE.Color(0xffffff);
 
   camera = new THREE.PerspectiveCamera(45, 600 / 400, 1, 10000);
-  camera.position.z = 10;
+  camera.position.z = 1;
 
   controls = new THREE.TrackballControls(camera);
   controls.rotateSpeed = 1.0;
@@ -65,9 +65,6 @@ function init() {
     const width = el.nodes[1].x - el.nodes[0].x;
     const height = el.nodes[2].y - el.nodes[1].y;
     const depth = el.nodes[5].z - el.nodes[1].z;
-    if (depth != 0) {
-      console.log(depth);
-    }
     var geometry = new THREE.BoxGeometry(width, height, depth);
 
     var temp_sum = 0;
