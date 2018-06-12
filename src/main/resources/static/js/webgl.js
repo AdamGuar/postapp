@@ -28,6 +28,7 @@ function init() {
   scene.background = new THREE.Color(0xffffff);
 
   camera = new THREE.PerspectiveCamera(45, 600 / 400, 1, 10000);
+  camera.position.z = 0.1;
 
   controls = new THREE.TrackballControls(camera);
   controls.rotateSpeed = 1.0;
@@ -90,8 +91,6 @@ function init() {
   }
   const max = (max_width > max_height) ? max_width: max_height;
   console.log(max);
-  camera.position.z = max;
-
 
   render();
 }
