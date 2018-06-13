@@ -27,7 +27,7 @@ function init() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0xffffff);
 
-  camera = new THREE.PerspectiveCamera(70, 600 / 400, 1, 10000);
+  camera = new THREE.PerspectiveCamera(40, 600 / 400, 0.1, 1000);
   camera.position.set(0, 0, 1);
   controls = new THREE.TrackballControls(camera);
   controls.rotateSpeed = 1.0;
@@ -44,8 +44,8 @@ function init() {
 
 
   var light = new THREE.AmbientLight(0xffffff);
-  var pointLight = new THREE.PointLight( 0xffffff, 0.8 );
-  // camera.add( pointLight );
+  var pointLight = new THREE.PointLight( 0xffffff, 1 );
+  camera.add( pointLight );
   scene.add(light);
 
   var max_temp = model.elements[0].nodes[0].value;
