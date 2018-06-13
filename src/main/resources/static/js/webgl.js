@@ -27,7 +27,7 @@ function init() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0xffffff);
 
-  camera = new THREE.PerspectiveCamera(45, 600 / 400, 1, 10000);
+  camera = new THREE.PerspectiveCamera(40, 600 / 400, 1, 10000);
   camera.position.set(0, 0, 1);
   controls = new THREE.TrackballControls(camera);
   controls.rotateSpeed = 1.0;
@@ -83,7 +83,7 @@ function init() {
     const g = 1 - normalized;
     var c = new THREE.Color( r, g, 0 );
 
-    var material = new THREE.MeshStandardMaterial({color: c});
+    var material = new THREE.MeshPhongMaterial({color: c});
     var mesh = new THREE.Mesh(geometry, material);
 
     mesh.position.set(8*el.nodes[0].x, 8*el.nodes[0].y, 8*el.nodes[0].z);
